@@ -25,7 +25,7 @@ jobs:
     
     - name: Run tests
       run: |
-        python manage.py test --settings=trylo.settings.base
+        python manage.py test --settings=trylo.settings
     
     - name: Run linting
       run: |
