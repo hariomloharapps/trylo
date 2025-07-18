@@ -1,4 +1,4 @@
-from .settings.base import *
+
 # Production settings
 import os
 """
