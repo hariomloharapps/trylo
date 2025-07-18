@@ -1,3 +1,6 @@
+from .settings.base import *
+# Production settings
+import os
 """
 Django settings for trylo project.
 
@@ -25,7 +28,7 @@ SECRET_KEY = 'django-insecure-x17&o+&z7*xug&i_)dw9is)$(0a1j4rwnzs)mk#%%b#mc+71ql
 # SECURITY WARNING: don't run with debug turned on in production!
 # settings.py
 DEBUG = False  # Must be False for custom error pages to work
-ALLOWED_HOSTS = ['your-domain.com', 'localhost', '127.0.0.1']  # Add your domains
+ALLOWED_HOSTS = ['*']
 
 # Optional: Add custom error handling
 LOGGING = {
