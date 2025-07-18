@@ -4,7 +4,6 @@ from .base import *
 # Security settings
 DEBUG = False
 ALLOWED_HOSTS = ['*']
-
 # Database
 DATABASES = {
     'default': {
