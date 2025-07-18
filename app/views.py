@@ -414,7 +414,8 @@ def export_contact_csv(request):
     """
     try:
         response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = f'attachment; filename="contact-messages-{timezone.now().strftime('%Y-%m-%d')}.csv"'
+        date_str = timezone.now().strftime('%Y-%m-%d')
+        response['Content-Disposition'] = f'attachment; filename="contact-messages-{date_str}.csv"'
 
         writer = csv.writer(response)
 
