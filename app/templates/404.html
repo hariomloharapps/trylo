@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | NowCloset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --surface-light: #fafafa;
+            --surface-variant: #f5f5f5;
+            --outline-light: #e0e0e0;
+            --secondary-gray: #2c2c2c;
+            --text-variant: #6c6c6c;
+            --surface-dark: #0a0a0a;
+            --surface-dark-variant: #1a1a1a;
+            --outline-dark: #2c2c2c;
+            --text-dark-variant: #9e9e9e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark {
+            color: var(--primary-white);
+            background-color: var(--primary-black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            border-bottom-color: var(--outline-dark);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: var(--primary-white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-variant);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+
+        body.dark .nav-links a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .nav-links a:hover {
+            color: var(--primary-white);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1.5px solid var(--primary-black);
+            color: var(--primary-black);
+            padding: 12px 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle {
+            border-color: var(--primary-white);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* 404 Main Content */
+        .error-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 40px 0;
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-visual {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .error-number {
+            font-size: 12rem;
+            font-weight: 900;
+            letter-spacing: -8px;
+            opacity: 0.1;
+            margin-bottom: -60px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            animation: swing 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .error-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .error-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-variant);
+        }
+
+        body.dark .error-subtitle {
+            color: var(--text-dark-variant);
+        }
+
+        .error-description {
+            font-size: 1.1rem;
+            color: var(--text-variant);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        body.dark .error-description {
+            color: var(--text-dark-variant);
+        }
+
+        .error-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 20px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .btn-primary {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.dark .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-black);
+            padding: 20px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1.5px solid var(--primary-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary {
+            color: var(--primary-white);
+            border-color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Suggestions */
+        .suggestions {
+            background: var(--surface-variant);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 40px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .suggestions {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        .suggestions h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .suggestions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .suggestions-list a {
+            color: var(--text-variant);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+        }
+
+        .suggestions-list a:hover {
+            color: var(--primary-black);
+            background: var(--primary-white);
+            border-color: var(--outline-light);
+        }
+
+        body.dark .suggestions-list a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .suggestions-list a:hover {
+            color: var(--primary-white);
+            background: var(--surface-dark);
+            border-color: var(--outline-dark);
+        }
+
+        /* Status Message */
+        .status-message {
+            background: linear-gradient(135deg, var(--surface-light), var(--surface-variant));
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .status-message {
+            background: linear-gradient(135deg, var(--surface-dark), var(--surface-dark-variant));
+            border-color: var(--outline-dark);
+        }
+
+        .status-message p {
+            color: var(--text-variant);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        body.dark .status-message p {
+            color: var(--text-dark-variant);
+        }
+
+        .status-message .highlight {
+            color: var(--primary-black);
+            font-weight: 600;
+        }
+
+        body.dark .status-message .highlight {
+            color: var(--primary-white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface-variant);
+            padding: 40px 0;
+            border-top: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        body.dark footer {
+            background: var(--surface-dark-variant);
+            border-top-color: var(--outline-dark);
+        }
+
+        .footer-content {
+            text-align: center;
+            color: var(--text-variant);
+        }
+
+        body.dark .footer-content {
+            color: var(--text-dark-variant);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .error-number {
+                font-size: 8rem;
+                margin-bottom: -40px;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .error-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .suggestions {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">NowCloset</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="error-section">
+            <div class="container">
+                <div class="error-content">
+                    <div class="error-visual">
+                        <div class="error-number">404</div>
+                        <div class="error-icon">🧥</div>
+                    </div>
+                    
+                    <h1 class="error-title">Oops! Page Not Found</h1>
+                    <h2 class="error-subtitle">This outfit seems to be missing from our wardrobe</h2>
+                    <p class="error-description">
+                        Don't worry! The page you're looking for might be getting a style makeover or could be available soon. 
+                        Our fashion team is constantly adding new features and pages to enhance your shopping experience.
+                    </p>
+
+                    <div class="error-buttons">
+                        <a href="/" class="btn-primary">Back to Home</a>
+                        <a href="/contact" class="btn-secondary">Report Issue</a>
+                    </div>
+
+                    <div class="suggestions">
+                        <h3>Popular Destinations</h3>
+                        <div class="suggestions-list">
+                            <a href="/">🏠 Home - Browse our latest collections</a>
+                            <!-- <a href="/features">✨ Features - Discover what makes us special</a>
+                            <a href="/stores">🏪 Local Stores - Find retailers near you</a> -->
+                            <a href="/about">💡 About Us - Learn our story</a>
+                            <a href="/contact">📞 Contact - Get in touch with us</a>
+                        </div>
+                    </div>
+
+                    <div class="status-message">
+                        <p><span class="highlight">Coming Soon:</span> This page might be part of our upcoming features!</p>
+                        <p>We're constantly expanding NowCloset with new functionality and improved user experience.</p>
+                        <p>Check back soon or subscribe to our newsletter for updates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 NowCloset. All rights reserved. | <a href="/privacy" style="color: inherit;">Privacy Policy</a> | <a href="/terms" style="color: inherit;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorIcon = document.querySelector('.error-icon');
+            const errorNumber = document.querySelector('.error-number');
+            
+            // Add click animation to the error icon
+            errorIcon.addEventListener('click', () => {
+                errorIcon.style.transform = 'scale(1.2) rotate(360deg)';
+                setTimeout(() => {
+                    errorIcon.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            });
+
+            // Add hover effect to the 404 number
+            errorNumber.addEventListener('mouseenter', () => {
+                errorNumber.style.opacity = '0.3';
+                errorNumber.style.transform = 'scale(1.05)';
+            });
+
+            errorNumber.addEventListener('mouseleave', () => {
+                errorNumber.style.opacity = '0.1';
+                errorNumber.style.transform = 'scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

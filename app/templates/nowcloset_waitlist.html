@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Waitlist - NowCloset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --surface-light: #fafafa;
+            --surface-variant: #f5f5f5;
+            --outline-light: #e0e0e0;
+            --secondary-gray: #2c2c2c;
+            --text-variant: #6c6c6c;
+            --surface-dark: #0a0a0a;
+            --surface-dark-variant: #1a1a1a;
+            --outline-dark: #2c2c2c;
+            --text-dark-variant: #9e9e9e;
+            --success-green: #22c55e;
+            --error-red: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        body.dark {
+            color: var(--primary-white);
+            background-color: var(--primary-black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            border-bottom-color: var(--outline-dark);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: var(--primary-white);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1.5px solid var(--primary-black);
+            color: var(--primary-black);
+            padding: 12px 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle {
+            border-color: var(--primary-white);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Main Content */
+        .waitlist-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+
+        .waitlist-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .waitlist-info h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .waitlist-info .highlight {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark .waitlist-info .highlight {
+            background: linear-gradient(135deg, var(--primary-white), var(--text-dark-variant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .waitlist-info p {
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        body.dark .waitlist-info p {
+            color: var(--text-dark-variant);
+        }
+
+        .benefits {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .benefits li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            color: var(--text-variant);
+        }
+
+        body.dark .benefits li {
+            color: var(--text-dark-variant);
+        }
+
+        .benefits li::before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Form Styles */
+        .waitlist-form {
+            background: var(--surface-light);
+            padding: 48px;
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .waitlist-form {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
+        body.dark .form-group label {
+            color: var(--primary-white);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1.5px solid var(--outline-light);
+            border-radius: 12px;
+            font-size: 16px;
+            background: var(--primary-white);
+            color: var(--primary-black);
+            transition: all 0.3s ease;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            max-height: 200px;
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group textarea {
+            background: var(--surface-dark);
+            border-color: var(--outline-dark);
+            color: var(--primary-white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-black);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .form-group input:focus,
+        body.dark .form-group textarea:focus {
+            border-color: var(--primary-white);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group textarea::placeholder {
+            color: var(--text-variant);
+        }
+
+        body.dark .form-group textarea::placeholder {
+            color: var(--text-dark-variant);
+        }
+
+        .required {
+            color: var(--error-red);
+        }
+
+        .optional {
+            color: var(--text-variant);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        body.dark .optional {
+            color: var(--text-dark-variant);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 18px 32px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .btn-submit {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.dark .btn-submit:hover {
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled:hover {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Messages */
+        .message {
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .success-message {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .error-message {
+            background: var(--error-red);
+            color: white;
+        }
+
+        /* User Type Indicator */
+        .user-type-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1.5px solid var(--primary-black);
+            color: var(--primary-black);
+        }
+
+        body.dark .user-type-badge {
+            border-color: var(--primary-white);
+            color: var(--primary-white);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .waitlist-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .waitlist-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .waitlist-form {
+                padding: 32px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">NowCloset</a>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="waitlist-section">
+            <div class="container">
+                <div class="waitlist-content">
+                    <div class="waitlist-info">
+                        <div class="user-type-badge" id="userTypeBadge">
+                            👤 User Waitlist
+                        </div>
+                        <h1 id="waitlistTitle">Join the <span class="highlight">Shopping</span> Revolution</h1>
+                        <p id="waitlistDescription">Be among the first to experience the future of local fashion shopping. Get early access to exclusive deals and features.</p>
+                        <ul class="benefits" id="benefitsList">
+                            <li>Early access to beta features</li>
+                            <li>Exclusive deals from local stores</li>
+                            <li>Priority customer support</li>
+                            <li>Special launch promotions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="waitlist-form">
+                        <div class="message success-message" id="successMessage">
+                            🎉 Thank you for joining our waitlist! We'll notify you as soon as we launch.
+                        </div>
+                        
+                        <div class="message error-message" id="errorMessage">
+                            ❌ Something went wrong. Please try again.
+                        </div>
+                        
+                        <form id="waitlistForm">
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="excitement">
+                                    Why are you excited to join? <span class="optional">(Optional)</span>
+                                </label>
+                                <textarea id="excitement" name="excitement" placeholder="Tell us what excites you about NowCloset..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                Join Waitlist
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // API Configuration
+        // Format phone number for API (removes all non-digits, returns as string)
+        function formatPhoneForAPI(phone) {
+            if (!phone) return '';
+            // Remove all non-digit characters
+            let digits = phone.replace(/\D/g, '');
+            // Optionally, ensure it's 10 digits (Indian format)
+            if (digits.length > 10) {
+                digits = digits.slice(-10);
+            }
+            return digits;
+        }
+        const API_CONFIG = {
+            baseURL: '/api', // Change this to your actual API base URL
+            endpoints: {
+                joinWaitlist: '/waitlist/join/'
+            }
+        };
+
+        // Check URL parameters and set user type
+        function checkUserType() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userType = urlParams.get('user') !== null ? 'user' : 
+                           urlParams.get('owner') !== null ? 'owner' : 'user';
+            
+            const badge = document.getElementById('userTypeBadge');
+            const title = document.getElementById('waitlistTitle');
+            const description = document.getElementById('waitlistDescription');
+            const benefitsList = document.getElementById('benefitsList');
+            const excitementTextarea = document.getElementById('excitement');
+            
+            if (userType === 'owner') {
+                badge.innerHTML = '🏪 Store Owner Waitlist';
+                title.innerHTML = 'Join the <span class="highlight">Seller</span> Revolution';
+                description.textContent = 'Be among the first store owners to showcase your products on our platform. Get early access to powerful selling tools and features.';
+                
+                benefitsList.innerHTML = `
+                    <li>Early access to seller dashboard</li>
+                    <li>Priority onboarding support</li>
+                    <li>Reduced commission rates</li>
+                    <li>Featured store placement</li>
+                `;
+                
+                excitementTextarea.placeholder = 'Tell us what excites you about selling on NowCloset...';
+            } else {
+                excitementTextarea.placeholder = 'Tell us what excites you about NowCloset...';
+            }
+            
+            return userType;
+        }
+
+        // Initialize user type on page load
+        let currentUserType = checkUserType();
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Show message function
+        function showMessage(messageId, duration = 5000) {
+            const messageElement = document.getElementById(messageId);
+            messageElement.classList.add('show');
+            
+            setTimeout(() => {
+                messageElement.classList.remove('show');
+            }, duration);
+        }
+
+        // Hide all messages
+        function hideAllMessages() {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach(msg => msg.classList.remove('show'));
+        }
+
+        // API call function
+        async function joinWaitlist(data) {
+            try {
+                const response = await fetch(API_CONFIG.baseURL + API_CONFIG.endpoints.joinWaitlist, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                let result = null;
+                try {
+                    result = await response.json();
+                } catch (jsonErr) {
+                    result = null;
+                }
+
+                if (!response.ok) {
+                    // If backend sent a specific error message, use it
+                    const errorMsg = result && result.error ? result.error : `HTTP error! status: ${response.status}`;
+                    throw new Error(errorMsg);
+                }
+
+                return { success: true, data: result };
+            } catch (error) {
+                console.error('API Error:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Form submission handling
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('waitlistForm');
+            
+            // Hide any existing messages
+            hideAllMessages();
+            
+            // Disable submit button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const phoneNumber = formatPhoneForAPI(formData.get('phone'));
+            const message = formData.get('excitement');
+            
+            // Build API request data
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone_number: phoneNumber
+            };
+            
+            // Add optional fields only if they have values
+            if (message && message.trim()) {
+                data.message = message.trim();
+            }
+            
+            // Add is_store field based on user type
+            if (currentUserType === 'owner') {
+                data.is_store = true;
+            }
+            
+            try {
+                // Make API call
+                const result = await joinWaitlist(data);
+
+                if (result.success) {
+                    // Show success message
+                    showMessage('successMessage');
+                    form.reset();
+                    console.log('Waitlist submission successful:', result.data);
+                    console.log('Submitted data:', data);
+                } else {
+                    // Show backend error message in errorMessage div
+                    const errorDiv = document.getElementById('errorMessage');
+                    errorDiv.textContent = `❌ ${result.error}`;
+                    showMessage('errorMessage');
+                    console.error('Waitlist submission failed:', result.error);
+                }
+            } catch (error) {
+                // Show error message
+                const errorDiv = document.getElementById('errorMessage');
+                errorDiv.textContent = `❌ ${error.message}`;
+                showMessage('errorMessage');
+                console.error('Unexpected error:', error);
+            } finally {
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+            }
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = document.body.classList.contains('dark') 
+                    ? 'rgba(0, 0, 0, 0.9)' 
+                    : 'rgba(255, 255, 255, 0.9)';
+            } else {
+                header.style.backgroundColor = 'transparent';
+            }
+        });
+
+        // Indian phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 10) {
+                value = value.substring(0, 10);
+                e.target.value = value.replace(/(\d{5})(\d{5})/, '$1-$2');
+            }
+        });
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Server Error | NowCloset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --surface-light: #fafafa;
+            --surface-variant: #f5f5f5;
+            --outline-light: #e0e0e0;
+            --secondary-gray: #2c2c2c;
+            --text-variant: #6c6c6c;
+            --surface-dark: #0a0a0a;
+            --surface-dark-variant: #1a1a1a;
+            --outline-dark: #2c2c2c;
+            --text-dark-variant: #9e9e9e;
+            --error-red: #dc2626;
+            --error-red-light: #fef2f2;
+            --error-red-dark: #7f1d1d;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark {
+            color: var(--primary-white);
+            background-color: var(--primary-black);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            border-bottom-color: var(--outline-dark);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: var(--primary-white);
+        }
+
+        /* Error Content */
+        .error-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .error-visual {
+            margin-bottom: 40px;
+        }
+
+        .error-number {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -4px;
+            color: var(--error-red);
+            margin-bottom: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            animation: shake 1s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .error-subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--text-variant);
+        }
+
+        body.dark .error-subtitle {
+            color: var(--text-dark-variant);
+        }
+
+        .error-description {
+            font-size: 1rem;
+            color: var(--text-variant);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        body.dark .error-description {
+            color: var(--text-dark-variant);
+        }
+
+        .error-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .btn-primary {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.dark .btn-primary:hover {
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-black);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1.5px solid var(--primary-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary {
+            color: var(--primary-white);
+            border-color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Status Info */
+        .status-info {
+            background: var(--error-red-light);
+            border: 1px solid var(--error-red);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .status-info {
+            background: var(--error-red-dark);
+            border-color: var(--error-red);
+        }
+
+        .status-info h3 {
+            color: var(--error-red);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        body.dark .status-info h3 {
+            color: var(--primary-white);
+        }
+
+        .status-info p {
+            color: var(--error-red);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        body.dark .status-info p {
+            color: var(--text-dark-variant);
+        }
+
+        .status-info .highlight {
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface-variant);
+            padding: 20px 0;
+            border-top: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        body.dark footer {
+            background: var(--surface-dark-variant);
+            border-top-color: var(--outline-dark);
+        }
+
+        .footer-content {
+            text-align: center;
+            color: var(--text-variant);
+            font-size: 0.9rem;
+        }
+
+        body.dark .footer-content {
+            color: var(--text-dark-variant);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--surface-variant);
+            border: 1px solid var(--outline-light);
+            color: var(--primary-black);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .error-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .status-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <div class="container">
+            <a href="/" class="logo">NowCloset</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="error-section">
+            <div class="container">
+                <div class="error-content">
+                    <div class="error-visual">
+                        <div class="error-number">500</div>
+                        <div class="error-icon">⚠️</div>
+                    </div>
+                    
+                    <h1 class="error-title">Server Error</h1>
+                    <h2 class="error-subtitle">Something went wrong on our end</h2>
+                    <p class="error-description">
+                        We're experiencing technical difficulties with our servers. 
+                        Our team has been notified and is working to resolve the issue as quickly as possible.
+                    </p>
+
+                    <div class="error-buttons">
+                        <a href="/" class="btn-primary">Return Home</a>
+                        <button class="btn-secondary" onclick="location.reload()">Try Again</button>
+                    </div>
+
+                    <div class="status-info">
+                        <h3>What happened?</h3>
+                        <p><span class="highlight">Internal Server Error:</span> The server encountered an unexpected condition.</p>
+                        <p><span class="highlight">Impact:</span> This page is temporarily unavailable.</p>
+                        <p><span class="highlight">Resolution:</span> Our technical team is working on it. Please try again in a few minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 NowCloset. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Auto-refresh after 30 seconds
+        setTimeout(() => {
+            const refreshButton = document.querySelector('.btn-secondary');
+            if (refreshButton) {
+                refreshButton.textContent = 'Auto Refresh...';
+                refreshButton.style.opacity = '0.7';
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+        }, 30000);
+
+        // Add click effect to error number
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorNumber = document.querySelector('.error-number');
+            
+            errorNumber.addEventListener('click', () => {
+                errorNumber.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    errorNumber.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

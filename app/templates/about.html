@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NowCloset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --surface-light: #fafafa;
+            --surface-variant: #f5f5f5;
+            --outline-light: #e0e0e0;
+            --secondary-gray: #2c2c2c;
+            --text-variant: #6c6c6c;
+            --surface-dark: #0a0a0a;
+            --surface-dark-variant: #1a1a1a;
+            --outline-dark: #2c2c2c;
+            --text-dark-variant: #9e9e9e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            color: var(--primary-white);
+            background-color: var(--primary-black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            border-bottom-color: var(--outline-dark);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: var(--primary-white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-variant);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-black);
+        }
+
+        body.dark .nav-links a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .nav-links a:hover {
+            color: var(--primary-white);
+        }
+
+        body.dark .nav-links a.active {
+            color: var(--primary-white);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1.5px solid var(--primary-black);
+            color: var(--primary-black);
+            padding: 12px 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle {
+            border-color: var(--primary-white);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: var(--surface-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .hero {
+            background: var(--surface-dark);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark .hero .highlight {
+            background: linear-gradient(135deg, var(--primary-white), var(--text-dark-variant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            line-height: 1.7;
+        }
+
+        body.dark .hero p {
+            color: var(--text-dark-variant);
+        }
+
+        /* Story Section */
+        .story {
+            padding: 120px 0;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .story-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            color: var(--text-variant);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        body.dark .story-text p {
+            color: var(--text-dark-variant);
+        }
+
+        .story-visual {
+            height: 400px;
+            background: var(--surface-variant);
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .story-visual {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        /* Values Section */
+        .values {
+            padding: 120px 0;
+            background: var(--surface-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .values {
+            background: var(--surface-dark);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .value-card {
+            background: var(--primary-white);
+            padding: 48px;
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .value-card {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        body.dark .value-card:hover {
+            box-shadow: 0 20px 80px rgba(255, 255, 255, 0.1);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .value-card p {
+            color: var(--text-variant);
+            line-height: 1.7;
+        }
+
+        body.dark .value-card p {
+            color: var(--text-dark-variant);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 120px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .team-member {
+            background: var(--surface-variant);
+            padding: 40px;
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            text-align: center;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .team-member {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        body.dark .team-member:hover {
+            box-shadow: 0 20px 80px rgba(255, 255, 255, 0.1);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary-black);
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .team-avatar {
+            background: var(--primary-white);
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: var(--text-variant);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        body.dark .team-role {
+            color: var(--text-dark-variant);
+        }
+
+        .team-bio {
+            color: var(--text-variant);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        body.dark .team-bio {
+            color: var(--text-dark-variant);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 120px 0;
+            background: var(--surface-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .stats {
+            background: var(--surface-dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary-white);
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .stat-item {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        body.dark .stat-item:hover {
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+
+        body.dark .stat-number {
+            color: var(--primary-white);
+        }
+
+        .stat-label {
+            color: var(--text-variant);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        body.dark .stat-label {
+            color: var(--text-dark-variant);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        body.dark .section-subtitle {
+            color: var(--text-dark-variant);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            margin-bottom: 48px;
+        }
+
+        body.dark .cta p {
+            color: var(--text-dark-variant);
+        }
+
+        .btn-primary {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 20px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .btn-primary {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.dark .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface-variant);
+            padding: 60px 0;
+            border-top: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark footer {
+            background: var(--surface-dark-variant);
+            border-top-color: var(--outline-dark);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            color: var(--text-variant);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-black);
+        }
+
+        body.dark .footer-section a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .footer-section a:hover {
+            color: var(--primary-white);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .story-text h2 {
+                font-size: 2rem;
+            }
+
+            .story-visual {
+                height: 300px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-card {
+                padding: 32px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">NowCloset</a>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/nowcloset_waitlist">Join Waitlist</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>About <span class="highlight">NowCloset</span></h1>
+                    <p>We're revolutionizing local fashion commerce by connecting style enthusiasts with neighborhood boutiques and independent retailers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="story">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2025, NowCloset emerged from a simple observation: while online shopping dominated the fashion industry, local boutiques and independent retailers were struggling to reach customers in their own neighborhoods.</p>
+                        <p>We believe that fashion should be personal, sustainable, and community-driven. That's why we created a platform that bridges the gap between local fashion entrepreneurs and style-conscious consumers.</p>
+                        <p>Today, we're proud to support hundreds of local retailers while helping thousands of customers discover unique fashion pieces right in their backyard.</p>
+                    </div>
+                    <div class="story-visual">
+                        🏙️
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values">
+            <div class="container">
+                <h2 class="section-title">Our Values</h2>
+                <p class="section-subtitle">The principles that guide everything we do</p>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Sustainability</h3>
+                        <p>We promote sustainable fashion by reducing shipping distances, supporting local production, and encouraging mindful consumption.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Community</h3>
+                        <p>We believe in building strong local communities by connecting neighbors and supporting small businesses that make each area unique.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">✨</div>
+                        <h3>Authenticity</h3>
+                        <p>We celebrate unique, authentic style over mass-produced trends, helping you find pieces that truly reflect your personality.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <h3>Innovation</h3>
+                        <p>We're constantly innovating to make local fashion discovery easier, faster, and more enjoyable for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team">
+            <div class="container">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-subtitle">The passionate people behind NowCloset</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar">👨‍💼</div>
+                        <h3>Rupam Jain</h3>
+                        <div class="team-role">founder (Non-Technical)</div>
+                        <p class="team-bio">Rupam is the non-technical founder of NowCloset and manages all non-technical aspects, ensuring smooth business operations and growth.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">👩‍💻</div>
+                        <h3>Hariom Lohar</h3>
+                        <div class="team-role">Co-founder (Technical)</div>
+                        <p class="team-bio">Hariom is the technical co-founder of NowCloset and handles all things tech, from product development to platform engineering.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="stats">
+            <div class="container">
+                <h2 class="section-title">Our Impact</h2>
+                <p class="section-subtitle">Numbers that tell our story</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Local Retailers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Items Sold</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Cities Served</div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Join Our Community?</h2>
+                    <p>Whether you're a fashion lover or a local retailer, there's a place for you in the NowCloset community.</p>
+                    <a href="#" class="btn-primary">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>NowCloset</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">How It Works</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                </div>
+                <div class="footer-section">
+                    <h4>For Shoppers</h4>
+                    <a href="#">Browse Stores</a>
+                    <a href="#">Track Orders</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Customer Support</a>
+                </div>
+                <div class="footer-section">
+                    <h4>For Retailers</h4>
+                    <a href="#">Sell on NowCloset</a>
+                    <a href="#">Seller Dashboard</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Resources</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Social Media</a>
+                    <a href="#">Newsletter</a>
+                    <a href="#">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = document.body.classList.contains('dark') 
+                    ? 'rgba(0, 0, 0, 0.9)' 
+                    : 'rgba(255, 255, 255, 0.9)';
+            } else {
+                header.style.backgroundColor = 'transparent';
+            }
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            once: true
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const finalNumber = stat.textContent;
+                        const number = parseInt(finalNumber.replace(/\D/g, ''));
+                        const suffix = finalNumber.replace(/\d/g, '');
+                        
+                        let current = 0;
+                        const increment = number / 60;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= number) {
+                                current = number;
+                                clearInterval(timer);
+                            }
+                            stat.textContent = Math.floor(current) + suffix;
+                        }, 16);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

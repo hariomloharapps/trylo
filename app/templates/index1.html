@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>NowCloset - Local Fashion Marketplace | Buy & Sell Clothes from Nearby Stores</title>
+    <meta name="description" content="Discover unique clothing from local retailers near you. NowCloset connects you with nearby fashion stores for fast delivery, great prices, and community-first shopping experience.">
+    <meta name="keywords" content="local fashion marketplace, buy clothes online, sell clothes locally, nearby clothing stores, local retailers, fashion marketplace, community shopping, local business support">
+    <meta name="author" content="NowCloset">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="NowCloset - Your Local Fashion Marketplace">
+    <meta property="og:description" content="Connect with nearby stores and discover unique clothing pieces from local retailers. Shop local, dress global.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nowcloset.shop">
+    <meta property="og:image" content="https://www.nowcloset.shop/og-image.jpg">
+    <meta property="og:site_name" content="NowCloset">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NowCloset - Your Local Fashion Marketplace">
+    <meta name="twitter:description" content="Connect with nearby stores and discover unique clothing pieces from local retailers. Shop local, dress global.">
+    <meta name="twitter:image" content="https://www.nowcloset.shop/twitter-image.jpg">
+    <meta name="twitter:site" content="@nowcloset">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.nowcloset.shop">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NowCloset",
+        "description": "Local fashion marketplace connecting shoppers with nearby clothing retailers",
+        "url": "https://www.nowcloset.shop",
+        "logo": "https://www.nowcloset.shop/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/nowcloset",
+            "https://www.instagram.com/nowcloset",
+            "https://www.twitter.com/nowcloset"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-NOW-CLOSET",
+            "contactType": "Customer Service"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "NowCloset",
+        "url": "https://www.nowcloset.shop",
+        "description": "Local fashion marketplace for buying and selling clothes from nearby stores",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.nowcloset.shop/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --surface-light: #fafafa;
+            --surface-variant: #f5f5f5;
+            --outline-light: #e0e0e0;
+            --secondary-gray: #2c2c2c;
+            --text-variant: #6c6c6c;
+            --surface-dark: #0a0a0a;
+            --surface-dark-variant: #1a1a1a;
+            --outline-dark: #2c2c2c;
+            --text-dark-variant: #9e9e9e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            color: var(--primary-white);
+            background-color: var(--primary-black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            border-bottom-color: var(--outline-dark);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: var(--primary-white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-variant);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+
+        body.dark .nav-links a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .nav-links a:hover {
+            color: var(--primary-white);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1.5px solid var(--primary-black);
+            color: var(--primary-black);
+            padding: 12px 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle {
+            border-color: var(--primary-white);
+            color: var(--primary-white);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark .hero-text .highlight {
+            background: linear-gradient(135deg, var(--primary-white), var(--text-dark-variant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        body.dark .hero-text p {
+            color: var(--text-dark-variant);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-black);
+            color: var(--primary-white);
+            padding: 20px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .btn-primary {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        body.dark .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-black);
+            padding: 20px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1.5px solid var(--primary-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-black);
+            color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary {
+            color: var(--primary-white);
+            border-color: var(--primary-white);
+        }
+
+        body.dark .btn-secondary:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            background: var(--surface-variant);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .hero-visual {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        .clothing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 40px;
+            height: 100%;
+        }
+
+        .clothing-item {
+            background: var(--primary-white);
+            border-radius: 16px;
+            border: 0.5px solid var(--outline-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        body.dark .clothing-item {
+            background: var(--surface-dark);
+            border-color: var(--outline-dark);
+        }
+
+        .clothing-item:nth-child(1) { animation-delay: 0s; }
+        .clothing-item:nth-child(2) { animation-delay: 0.5s; }
+        .clothing-item:nth-child(3) { animation-delay: 1s; }
+        .clothing-item:nth-child(4) { animation-delay: 1.5s; }
+        .clothing-item:nth-child(5) { animation-delay: 2s; }
+        .clothing-item:nth-child(6) { animation-delay: 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: var(--surface-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .features {
+            background: var(--surface-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: var(--primary-white);
+            padding: 48px;
+            border-radius: 24px;
+            border: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .feature-card {
+            background: var(--surface-dark-variant);
+            border-color: var(--outline-dark);
+        }
+
+        body.dark .feature-card:hover {
+            box-shadow: 0 20px 80px rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: var(--text-variant);
+            line-height: 1.7;
+        }
+
+        body.dark .feature-card p {
+            color: var(--text-dark-variant);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        body.dark .section-subtitle {
+            color: var(--text-dark-variant);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: var(--text-variant);
+            margin-bottom: 48px;
+        }
+
+        body.dark .cta p {
+            color: var(--text-dark-variant);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface-variant);
+            padding: 60px 0;
+            border-top: 0.5px solid var(--outline-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark footer {
+            background: var(--surface-dark-variant);
+            border-top-color: var(--outline-dark);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            color: var(--text-variant);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-black);
+        }
+
+        body.dark .footer-section a {
+            color: var(--text-dark-variant);
+        }
+
+        body.dark .footer-section a:hover {
+            color: var(--primary-white);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .clothing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 32px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav class="container" role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="NowCloset homepage">NowCloset</a>
+            <ul class="nav-links">
+                <li><a href="nowcloset_waitlist">Join Waitlist</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 id="hero-heading">Your <span class="highlight">Local Fashion</span> Marketplace</h1>
+                        <p>Connect with nearby clothing stores and discover unique fashion pieces from local retailers in your area. Shop local, dress global with fast delivery and great prices.</p>
+                        <div class="hero-buttons">
+                            <a href="shop" class="btn-primary" aria-label="Start shopping on NowCloset">Start Shopping</a>
+                            <a href="sell" class="btn-secondary" aria-label="Sell your clothes on NowCloset">Sell Your Clothes</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="clothing-grid">
+                            <div class="clothing-item">👕</div>
+                            <div class="clothing-item">👗</div>
+                            <div class="clothing-item">👖</div>
+                            <div class="clothing-item">👚</div>
+                            <div class="clothing-item">🧥</div>
+                            <div class="clothing-item">👟</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading" class="section-title">Why Choose NowCloset for Local Fashion Shopping?</h2>
+                <p class="section-subtitle">Revolutionizing how you discover and buy clothes from local stores in your community</p>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🏪</div>
+                        <h3>Local Clothing Stores</h3>
+                        <p>Discover unique clothing pieces from nearby fashion retailers. Support local businesses while finding one-of-a-kind items that reflect your community's style.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🚚</div>
+                        <h3>Fast Local Delivery</h3>
+                        <p>Quick delivery from local stores means you get your fashion purchases faster and fresher than ever before. Same-day delivery available in many areas.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">💰</div>
+                        <h3>Great Prices on Fashion</h3>
+                        <p>Direct connection with local fashion retailers means better prices and exclusive deals you won't find elsewhere. No middleman markups.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">📱</div>
+                        <h3>Easy Fashion Shopping</h3>
+                        <p>Browse, compare, and purchase from multiple local clothing stores all in one seamless platform. Mobile-friendly shopping experience.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🌟</div>
+                        <h3>Quality Assured Fashion</h3>
+                        <p>All fashion retailers are verified and customer-rated to ensure you get the best quality clothing products. Read reviews before you buy.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🤝</div>
+                        <h3>Community First Fashion</h3>
+                        <p>Build connections with local fashion entrepreneurs and be part of your community's economic growth. Shop with purpose.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-heading">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 id="cta-heading">Ready to Transform Your Wardrobe with Local Fashion?</h2>
+                    <p>Join thousands of fashion enthusiasts who've already discovered the joy of local shopping and supporting their community</p>
+                    <div class="hero-buttons">
+                        <a href="#signup" class="btn-primary" aria-label="Get started with NowCloset today">Get Started Now</a>
+                        <a href="#learn-more" class="btn-secondary" aria-label="Learn more about NowCloset">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>NowCloset</h4>
+                    <a href="/about">About Us</a>
+                    <a href="/nowcloset_waitlist">Join Waitlist</a>
+                    <a href="/careers">Careers</a>
+                    <a href="/press">Press</a>
+                </div>
+                <div class="footer-section">
+                    <h4>For Shoppers</h4>
+                    <a href="/stores">Browse Local Stores</a>
+                    <a href="/orders">Track Orders</a>
+                    <a href="/size-guide">Size Guide</a>
+                    <a href="/support">Customer Support</a>
+                </div>
+                <div class="footer-section">
+                    <h4>For Retailers</h4>
+                    <a href="/sell">Sell on NowCloset</a>
+                    <a href="/dashboard">Seller Dashboard</a>
+                    <a href="/pricing">Pricing</a>
+                    <a href="/resources">Resources</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="/contact">Contact Us</a>
+                    <a href="/social">Social Media</a>
+                    <a href="/newsletter">Newsletter</a>
+                    <a href="/blog">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.textContent = '☀️';
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                themeToggle.textContent = '🌙';
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = document.body.classList.contains('dark') 
+                    ? 'rgba(0, 0, 0, 0.9)' 
+                    : 'rgba(255, 255, 255, 0.9)';
+            } else {
+                header.style.backgroundColor = 'transparent';
+            }
+        });
+
+        // Lazy loading for images (when you add them)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
